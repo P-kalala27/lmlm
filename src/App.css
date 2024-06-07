@@ -1,35 +1,47 @@
 .container{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    
+    width: 90%;
+        margin: 2rem auto;
+        padding: 1em 0;
+        align-content: center;
 }
 
 .title{
     font-weight: 400;
     font-style: italic;
+    color: aliceblue;
+        text-align: center;
+        padding: 2rem;
 }
 
-.title h1{
-    margin: 5px 0;
-    padding: 12px 10px;
-    color: white;
-}
-
-.hero{
+.searchBar {
     display: flex;
-    flex-direction: column;
-    
-    width: 60%;
-    margin: 20px 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 1em 0;
+    margin: 0 auto;
 }
 
-.hero input{
+.searchBar form {
+    display: flex;
+    flex-direction: row;
+        justify-content: center;
+        width: 60%;
+        margin: 0 auto;
+            gap: 20px;
+            padding: 12px;
+}
+
+form div {
+    width: 100%;
+}
+
+form input {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
     border: none;
     border-bottom: 1px solid #ccc;
     outline: none;
@@ -37,29 +49,40 @@
     font-weight: 400;
     font-style: italic;
     border-radius: 8px;
+    border-radius: 12px;
 }
 
 
-
-button{
-    padding: 12px 10px;
+.btn button {
+    padding: 10px 10px;
     font-size: 24px;
-    width: 260px;
+    width: 180px;
     justify-content: flex-end;
     align-items: flex-end;
     background-color: rgb(6, 8, 50);
-    color: white;
+    outline: none;
+        font-size: 18px;
+        font-weight: 400;
+        font-style: italic;
+        border-radius: 8px;
+        margin-right: 12px;
     cursor: pointer;
 }
 
-button:hover{
-    background-color: rgb(6, 1, 71);
-    color: white;
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-.note{
-    font-size: 15px;
+.notes {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }
 
-ul li{
-    font-size: 18px;
+.notes li {
+    list-style-type: circle;
+    text-align: start;
+    margin: 8px;
 }
