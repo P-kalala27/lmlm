@@ -1,28 +1,28 @@
 /* eslint-disable react/prop-types */
 
-import { useState } from "react";
+import { useState } from 'react';
 
 
-const NoteForm = ({createNote}) => {
-    const [newNote, setNewNote] = useState('')
+const NoteForm = ({ createNote }) => {
+  const [newNote, setNewNote] = useState('')
 
-    const addNote = (e) =>{
-        e.preventDefault();
-        createNote({
-            content: newNote,
-            important: true,
-        })
+  const addNote = (e) => {
+    e.preventDefault()
+    createNote({
+      content: newNote,
+      important: Math.random()> 0.5,
+    })
 
-        setNewNote('')
-    }
+    setNewNote('')
+  }
   return (
-    <div>
-        <h2>Create a new note</h2>
-        <form onSubmit={addNote}>
-            <input value={newNote}
-             onChange={(e)=> setNewNote(e.target.value)} />
-            <button type="submit">create</button>
-        </form>
+    <div className="formDiv">
+      <h2>Create a new note</h2>
+      <form onSubmit={addNote}>
+        <input value={newNote}
+          onChange={(e) => setNewNote(e.target.value)} />
+        <button type="submit">create</button>
+      </form>
     </div>
   )
 }

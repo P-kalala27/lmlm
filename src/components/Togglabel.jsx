@@ -1,28 +1,41 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 
-import { useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from 'react';
 
+import PropTypes from 'prop-types';
+const Togglabel = forwardRef((props, refs) => {
+  const [visible, setVisible] = useState(false)
 
-const Togglabel = (props) => {
-    const [visible, setVisible] = useState(false)
-    const hideVisible = {display: visible ? 'none': ''}
-    const showVisible = {display: visible? '' : 'none'}
+  const hideWhenVisible = { display: visible ? 'none' : '' }
+  const showWhenVisible = { display: visible ? '' : 'none' }
 
-    const toggleVisible = () => {
-        setVisible(!visible)
+  const toggleVisibility = () => {
+    setVisible(!visible)
+  }
+
+  useImperativeHandle(refs, () => {
+    return {
+      toggleVisibility
     }
+  })
+
   return (
     <div>
-        <div style={hideVisible}>
-            <button onClick={toggleVisible}>{props.buttonLabel}</button>
-        </div>
-        <div style={showVisible}>
-            {props.children}
-            <button onClick={toggleVisible}>cancel</button>
-        </div>
+      <div style={hideWhenVisible}>
+        <button onClick={toggleVisibility}>{props.buttonLabel}</button>
+      </div>
+      <div style={showWhenVisible} className='toggle'>
+        {props.children}
+        <button onClick={toggleVisibility}>cancel</button>
+      </div>
     </div>
   )
+})
+Togglabel.propTypes = {
+  buttonLabel: PropTypes.string.isRequired
 }
-
+Togglabel.displayName = 'Togglabel'
 export default Togglabel
