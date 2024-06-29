@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 const LoginForm = ({
   handleSubmit,
@@ -23,6 +23,7 @@ const LoginForm = ({
             type="text"
             value={username}
             name="Username"
+            id="username"
             onChange={handleUsernameChange}
           />
         </div>
@@ -31,10 +32,11 @@ const LoginForm = ({
           <input
             type="password"
             value={password}
+            id="password"
             name="Password"
             onChange={handlePasswordChange}/>
         </div>
-        <button type='submit'>login</button>
+        <button type='submit' id='login-btn'>login</button>
       </form>
     </div>
   )

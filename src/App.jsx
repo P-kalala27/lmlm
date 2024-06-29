@@ -156,9 +156,12 @@ const App = () => {
 
       {!user && loginForm()}
       {
-        user && <Togglabel buttonLabel= "New Note" ref={noteFormRef}>
+        user && <div>
+          <Togglabel buttonLabel= "New Note" ref={noteFormRef}>
           <NoteForm createNote={addNote} />
         </Togglabel>
+        <p>{user.name} logged in</p>
+        </div>
       }
       <div className="hero-section">
         <ul className="notes">
@@ -166,6 +169,7 @@ const App = () => {
           {noteToShow.map((note) => (
             <Note note={note} key={note.id}
               toggleImportant={() => toogleImportant(note.id) } />
+              
           ))}
         </ul>
         <div>
