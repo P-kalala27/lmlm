@@ -43,4 +43,18 @@ describe('<Togglelable />', ()=>{
         const div = container.querySelector('.togglableContent')
         expect(div).toHaveStyle('display: none')
     })
+
+    test('toggle content can be closed', async () => {
+      const user = userEvent.setup()
+      const button = Screen.getByText('show...')
+
+      await user.click(button)
+
+      const closeBtn = Screen.getByText('cancel')
+      await user.click(closeBtn)
+
+      const div = container.querySelector('.togglableContent')
+      expect(div).toHaveStyle('display: none')
+    })
+    
 })
