@@ -1,47 +1,39 @@
-import { createStore } from "redux";
-
-export const noteReducer = (state = [], action) => {
-    if (action.type === 'NEW_NOTE') {
-      state.push(action.payload)
-      return state
+const noteReducer = (state = [], action) =>{
+  switch(action.type){
+    case 'NEW_NOTE' : 
+      return [...state, action.payload]
+    case 'TOGGLE_IMPORTANT' : {
+      const id = action.payload.id
+      const noteChange = state.find(n => n.id === id);
+      const changedNote = {
+        ...noteChange,
+        important:!noteChange.important
+      }
+      return state.map(note => note.id !== id ?  note : changedNote)
     }
-  
-    return state
+    default: return state
   }
-  
-  const store = createStore(noteReducer)
-  
-  store.dispatch({
+}
+
+const generatedId = ()=>{
+  return Number((Math.random() *1000000).toFixed(0))
+}
+export const createNote = (content) =>{
+  return {
     type: 'NEW_NOTE',
     payload: {
-      content: 'the app state is in redux store',
-      important: true,
-      id: 1
-    }
-  })
-  
-  store.dispatch({
-    type: 'NEW_NOTE',
-    payload: {
-      content: 'state changes are made with actions',
+      content,
       important: false,
-      id: 2
+      id: generatedId()
     }
-  })
-  
-  const App = () => {
-    return(
-      <div>
-        <ul>
-          {store.getState().map(note=>
-            <li key={note.id}>
-              {note.content} <strong>{note.important ? 'important' : ''}</strong>
-            </li>
-
-          )}
-          </ul>
-      </div>
-    )
   }
+}
 
-  
+export const toggleImportanceOf = (id) =>{
+  return {
+      type: 'TOGGLE_IMPORTANCE',
+      payload:{id}
+  }
+}
+
+export default noteReducer
