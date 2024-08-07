@@ -25,8 +25,7 @@ const Notes = () => {
         : notes.notes.filter(note =>!note.important)
           // not important notes  // non important notes  // non important notes  // non important notes  // non important notes  // non important notes  // non important notes  // non important notes  // non important notes  // non important notes  // non important notes  // non important notes  // non important notes  // non important notes  // non important notes  // non important notes  // non important notes  // non
     })
-
-    console.log(notes);
+console.log(notes);
   return (
     <div>
         <ul>
